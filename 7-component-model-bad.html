@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>v-bind/v-on</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Conponent2</h3>
+        <div id="components2-demo">
+            <custom-input v-model="message"></custom-input>
+        </div>
+    </div>
+    <script>
+        Vue.component('custom-input', {
+            props: ['message'],
+            template: `
+              <div>
+                <input
+                    v-model="message"
+                >
+                <p>Message is: {{ message }}</p>
+              </div>
+            `
+        })
+
+        var vm = new Vue({
+            el: '#components2-demo',
+        })
+    </script>
+</body>
+
+<style>
+
+</style>
+
+</html>

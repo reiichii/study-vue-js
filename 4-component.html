@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>v-bind/v-on</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Conponent</h3>
+        <div id="components-demo">
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+        </div>
+    </div>
+    <script>
+        /* コンポーネントの定義 */
+        Vue.component('button-counter', {
+            data: function () {
+                return {
+                    counter: 0
+                }
+            },
+            template: '<a class="btn-push active" @click="counter++">Add {{ counter }}</a>'
+        })
+
+        /* コンポーネントをカスタム要素として使用できるようにする */
+        new Vue({ el: '#components-demo' })
+    </script>
+</body>
+
+<style>
+    .btn-push {
+        display: inline-block;
+        max-width: 180px;
+        text-align: left;
+        font-size: 16px;
+        color: #FFF;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 24px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-push:active {
+        transform: translateY(4px);
+        border-bottom: none;
+    }
+
+    .active {
+        background-color: #5fb3f5;
+        border-bottom: 4px solid #4095d6;
+    }
+</style>
+
+</html>

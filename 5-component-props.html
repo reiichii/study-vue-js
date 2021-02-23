@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>v-bind/v-on</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Conponent2</h3>
+        <div id="components2-demo">
+            <!-- カスタム属性を使ってデータを渡している -->
+            <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></blog-post>
+        </div>
+    </div>
+    <script>
+        Vue.component('blog-post', {
+            props: ['post'], /* カスタム属性を定義 */
+            template: `
+            <div class="blog-post">
+              <h4>{{ post.title }}</h4>
+              <div v-html="post.content"></div>
+            </div>
+          `
+        })
+
+        new Vue({
+            el: '#components2-demo',
+            data: {
+                posts: [　/* 例えばapiから取得したデータが入ってくる */
+                    { id: 1, title: 'My journey with Vue', content: 'content1' },
+                    { id: 2, title: 'Blogging with Vue', content: 'content1' },
+                    { id: 3, title: 'Why Vue is so fun', content: 'content1' }
+                ]
+            }
+        })
+    </script>
+</body>
+
+<style>
+
+</style>
+
+</html>
